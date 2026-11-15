@@ -1,0 +1,227 @@
+:root {
+    --azul-fondo: #0a1424;
+    --azul-tarjeta: #112038;
+    --azul-israel: #0042e6;
+    --azul-borde: #1e355c;
+    --blanco: #ffffff;
+    --gris-texto: #b0c2de;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--azul-fondo);
+    color: var(--blanco);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Textos de fondo "ISRAEL MI PATRIA" con mayor visibilidad */
+.fondo-marca-agua {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+    user-select: none;
+    transform: rotate(-12deg) scale(1.25);
+}
+
+.fondo-marca-agua span {
+    font-size: clamp(2rem, 5vw, 4.2rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    /* Se aumentó la opacidad al 7.5% (0.075) para que destaquen claramente sobre el azul oscuro */
+    color: rgba(255, 255, 255, 0.075); 
+    white-space: nowrap;
+    text-align: center;
+}
+
+.fondo-marca-agua span:nth-child(even) {
+    transform: translateX(-8%);
+}
+
+/* Elementos principales por encima del fondo */
+.encabezado,
+.contenedor,
+.pie {
+    position: relative;
+    z-index: 1;
+}
+
+/* Franjas de la bandera */
+.franja-bandera {
+    width: 100%;
+    height: 12px;
+    background-color: var(--azul-israel);
+}
+
+/* Encabezado */
+.encabezado {
+    background-color: rgba(10, 20, 36, 0.92);
+    backdrop-filter: blur(6px);
+}
+
+.encabezado-contenido {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.encabezado h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--blanco);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+}
+
+.subtitulo-patria {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: var(--blanco);
+    background-color: var(--azul-israel);
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0, 66, 230, 0.4);
+}
+
+.descripcion {
+    color: var(--gris-texto);
+    font-size: 1rem;
+}
+
+/* Contenedor y Cuadrícula */
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3.5rem;
+    flex: 1;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+}
+
+/* Tarjeta de cada foto */
+.tarjeta {
+    background-color: var(--azul-tarjeta);
+    border: 1px solid var(--azul-borde);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: var(--azul-israel);
+    box-shadow: 0 12px 30px rgba(0, 66, 230, 0.25);
+}
+
+/* Contenedor de imagen */
+.marco-imagen {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #070d18;
+}
+
+.marco-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta:hover .marco-imagen img {
+    transform: scale(1.04);
+}
+
+/* Barra inferior con botón de descarga */
+.acciones {
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--azul-tarjeta);
+    border-top: 1px solid var(--azul-borde);
+}
+
+.titulo-foto {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gris-texto);
+}
+
+.btn-descargar {
+    background-color: var(--azul-israel);
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-descargar:hover {
+    background-color: #0034b8;
+}
+
+.btn-descargar:active {
+    transform: scale(0.97);
+}
+
+/* Pie de página */
+.pie {
+    background-color: rgba(10, 20, 36, 0.92);
+    text-align: center;
+    color: var(--gris-texto);
+    font-size: 0.875rem;
+}
+
+.pie p {
+    padding: 1.25rem 1rem;
+}
+
+/* Ajustes para teléfonos */
+@media (max-width: 480px) {
+    .encabezado-contenido {
+        padding: 2rem 1rem;
+    }
+
+    .encabezado h1 {
+        font-size: 1.8rem;
+    }
+
+    .contenedor {
+        padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .galeria {
+        gap: 1.25rem;
+    }
+}
